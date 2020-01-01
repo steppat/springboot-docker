@@ -11,12 +11,13 @@
 	<groupId>br.com.caelum</groupId>
 	<artifactId>docker</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>docker</name>
+	<name>springapp</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
 		<java.version>1.8</java.version>
-	</properties>
+    	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  	</properties>
 
 	<dependencies>
 		<dependency>
@@ -32,6 +33,7 @@
 	</dependencies>
 
 	<build>
+		<finalName>${project.name}</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
