@@ -1,5 +1,7 @@
-FROM ubuntu
+FROM ubuntu:18.04
 WORKDIR /app
-COPY target/springapp.jar .
+ARG JAR_FILE_NAME=springapp.jar
+COPY target/$JAR_FILE_NAME .
 RUN apt-get update && apt-get install -y openjdk-8-jre
-ENTRYPOINT java -jar springapp.jar
+ENV JAR_NAME=$JAR_FILE_NAME
+ENTRYPOINT java -jar $JAR_NAME
