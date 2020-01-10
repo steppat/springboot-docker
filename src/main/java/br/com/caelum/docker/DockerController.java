@@ -43,4 +43,16 @@ public class DockerController {
 		return "banco";
 		
 	}
+	
+	@RequestMapping(method = RequestMethod.GET,path="/geraBancoV2")
+	public String geraBancoV2() throws SQLException{
+		Connection c = DriverManager.getConnection("jdbc:mysql://db:3306","root","");
+		String sql = "CREATE DATABASE javadb;";
+		PreparedStatement ps = c.prepareStatement(sql);
+		ps.execute();
+		ps.close();
+		c.close();
+		return "banco";
+		
+	}
 }
