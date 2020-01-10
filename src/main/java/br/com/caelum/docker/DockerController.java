@@ -1,8 +1,11 @@
 package br.com.caelum.docker;
 
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,5 +30,17 @@ public class DockerController {
 		fos.flush();
 		fos.close();
 		return "gera";
+	}
+	
+	@RequestMapping(method = RequestMethod.GET,path="/geraBanco")
+	public String geraBanco() throws SQLException{
+		Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306","root","");
+		String sql = "CREATE DATABASE javadb;";
+		PreparedStatement ps = c.prepareStatement(sql);
+		ps.execute();
+		ps.close();
+		c.close();
+		return "banco";
+		
 	}
 }
